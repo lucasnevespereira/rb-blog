@@ -1,24 +1,38 @@
-# rb-blog
+# Rb-Blog app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create new rails app
+`rails new rb-blog`
 
-Things you may want to cover:
+Install dependencies
+`bundle`
 
-- Ruby version
+Serve the application
+`rails s`
 
-- System dependencies
+## Installation dependecies
 
-- Configuration
+Install other gems (dependencies) to make our life easier :)
 
-- Database creation
+Go to Gemfile and add
 
-- Database initialization
+`gem 'simple_form'`
 
-- How to run the test suite
+Run `bundle` again to install new dependencies
 
-- Services (job queues, cache servers, search engines, etc.)
+Generate Form Generator
+`rails generate simple_form:install`
 
-- Deployment instructions
+In `Gemfile` -> group development add:
 
-- ...
+`gem ‘guard-livereload’, ‘~> 2.5’, require: false`
+
+Run `bundle`
+
+Run `guard init livereload`
+
+Start guard it will be waiting for changements for live reload like nodemon
+Run `bundle exec guard` in another terminal window
+
+## First Controller
+
+`rails g controller posts`
