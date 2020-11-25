@@ -24,7 +24,11 @@ Generate Form Generator
 
 In `Gemfile` -> group development add:
 
-`gem ‘guard-livereload’, ‘~> 2.5’, require: false`
+```
+gem "better_errors"
+gem "binding_of_caller"
+gem ‘guard-livereload’, ‘~> 2.5’, require: false
+```
 
 Run `bundle`
 
@@ -33,6 +37,29 @@ Run `guard init livereload`
 Start guard it will be waiting for changements for live reload like nodemon
 Run `bundle exec guard` in another terminal window
 
-## First Controller
+## Posts Controller
 
 `rails g controller posts`
+
+In `posts_controller.rb` add an index method
+
+```
+class PostsController < ApplicationController
+  def index
+  end
+end
+```
+
+In `app/views/posts` create a `index.html.erb` and add a simple h1 tag
+
+```
+<h1 class="title">Blog Index</h1>
+```
+
+## Setup Posts Route
+
+In `config/routes.db` add
+
+```
+  resources :posts
+```
