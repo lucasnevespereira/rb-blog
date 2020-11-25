@@ -67,3 +67,9 @@ In `config/routes.db` add
 ```
   resources :posts
 ```
+
+<b>Additional:</b> If you want main route to redirect to posts page add under `resources :posts` :
+
+```
+ root "posts#index"
+```
