@@ -14,13 +14,17 @@ Serve the application
 Install other gems (dependencies) to make our life easier :)
 
 Go to Gemfile and add
-
+`gem "bulma-rails", "~> 0.9.1"`
 `gem 'simple_form'`
 
 Run `bundle` again to install new dependencies
 
 Generate Form Generator
 `rails generate simple_form:install`
+
+For Bulma CSS go to `assets/stylesheets/application.scss` and add
+
+`@import "bulma";`
 
 In `Gemfile` -> group development add:
 
