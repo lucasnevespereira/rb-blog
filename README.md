@@ -73,3 +73,17 @@ In `config/routes.db` add
 ```
  root "posts#index"
 ```
+
+## Post Model
+
+```
+rails g model Post title:string content:text
+```
+
+- This creates a first migration
+
+To run a migration
+
+```
+rails db:migrate
+```
