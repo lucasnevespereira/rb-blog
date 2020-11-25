@@ -74,6 +74,12 @@ In `config/routes.db` add
  root "posts#index"
 ```
 
+To see all routes and Controllers Actions on routes
+
+```
+rake routes
+```
+
 ## Post Model
 
 ```
@@ -86,4 +92,76 @@ To run a migration
 
 ```
 rails db:migrate
+```
+
+## Create new post method
+
+In `posts_controller.rb` add
+
+```
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+
+    if @post.save
+      redirect_to @post
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
+  end
+```
+
+Add a template `new.html.erb` for `Post.new`
+Create a simple form (using simple_form gem here)
+
+```
+
+<div class="section">
+  <%= simple_form_for @post do |f| %>
+    <div class="field">
+      <div class="control">
+      <%= f.input :title, input_html: {class: 'input'}, wrapper: false, label_html: {class: 'label'} %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+      <%= f.input :content, input_html: {class: 'textarea'}, wrapper: false, label_html: {class: 'label'} %>
+      </div>
+    </div>
+    <%= f.button :submit, 'Create new post', class: "button is-primary"%>
+  <% end %>
+</div>
+
+```
+
+## Create a show Post method
+
+Still in `posts_controller.rb` add a show method that will find our created posts
+
+```
+  def show
+    @post = Post.find(params[:id])
+  end
+```
+
+Add a template `show.html.erb` for show method
+
+```
+<div class="section">
+  <div class="container">
+    <h2 class="title"> <%= @post.title %> </h2>
+    <div class="content">
+        <%= @post.content %>
+    </div>
+  </div>
+</div>
 ```
