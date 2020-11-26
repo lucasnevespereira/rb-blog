@@ -180,3 +180,37 @@ Add a template `show.html.erb` for show method
   </div>
 </div>
 ```
+
+## Show all posts
+
+In `posts_controller.rb` create a new variable `@posts` in the `index` method that will find all posts
+
+```
+  def index
+    @posts = Post.all.order("created_at DESC")
+  end
+```
+
+Then display them in the `index.html.erb` template
+
+```
+
+<section class="section">
+  <div class="container">
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"> <%= post.title %></p>
+            </div>
+          </div>
+          <div class="content">
+            <%= post.content %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+```
