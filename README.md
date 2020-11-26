@@ -202,7 +202,7 @@ Then display them in the `index.html.erb` template
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4"> <%= post.title %></p>
+              <p class="title is-4"> <%= link_to post.title, post %></p>
             </div>
           </div>
           <div class="content">
